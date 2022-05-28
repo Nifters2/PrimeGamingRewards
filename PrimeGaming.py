@@ -189,13 +189,7 @@ def amazon_gaming(email, password):
 
 
 for i in range(10):
-    print(i)
-    email_address = email[0]
-    password = email[1]
-
-    print(email_address)
-    print(password)
-
+    print(f"We are working for {i} no account")
     twist_signup(email[i], email[i+1])
     print(input("Veryfi Using Gmail :  "))
     amazon_signup(email[i], email[i+1])
