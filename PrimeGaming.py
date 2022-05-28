@@ -14,13 +14,13 @@ chrome_options = Options()
 scriptDirectory = pathlib.Path().absolute()
 chrome_options.add_argument("--start-maximized")
 
-chrome_options.add_argument("--user-data-dir=chrome-data")
-chrome_options.add_argument('--profile-directory=Profile 8')
+# chrome_options.add_argument("--user-data-dir=chrome-data")
+# chrome_options.add_argument('--profile-directory=Profile 8')
 prefs = {"profile.default_content_setting_values.notifications": 2}
 chrome_options.add_experimental_option("prefs", prefs)
 chrome_options.add_argument('disable-infobars')
-chrome_options.add_argument("user-data-dir=chrome-data")
-chrome_options.add_argument(f"user-data-dir={scriptDirectory}\\userdata")
+# chrome_options.add_argument("user-data-dir=chrome-data")
+# chrome_options.add_argument(f"user-data-dir={scriptDirectory}\\userdata")
 
 chrome_options.add_argument(
     "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36")
@@ -68,7 +68,7 @@ email = spreadsheet_connector.row_values(2)
 
 
 def enter_email_password(driver, username, password):
-    print("Your email :" + email, "Your password :" + password + "for gmail")
+    print("Your email :" + email, "Your password :" + password + " for gmail")
     driver.get("https://accounts.google.com/?hl=en-us")
     driver.implicitly_wait(10)
     email_xpath = "//input[@type='email']"
@@ -98,7 +98,7 @@ def enter_email_password(driver, username, password):
 
 
 def twist_signup(email, password):
-    print("Your email :" +email, "Your password :" +password + "for TwistTv account")
+    print("Your email :" +email, "\nYour password :" +password + " for TwistTv account")
     driver.get("https://www.twitch.tv/")
     time.sleep(4)
 
@@ -152,7 +152,7 @@ def twist_signup(email, password):
 
 
 def amazon_signup(email, password):
-    print("Your email :" +email, "Your password :" +password + "for amazon original Account")
+    print("Your email :" +email, "\nYour password :" +password + " for amazon original Account")
     driver.get("https://www.amazon.com/your-account")
 
     driver.find_element_by_xpath("//a[@id='nav-link-accountList']").click()
@@ -173,10 +173,11 @@ def amazon_signup(email, password):
 
 
 def amazon_gaming(email, password):
-    print("Your email :" +email, "Your password :" +password + "for amazon gaming")
+    print("Your email :" +email, "\nYour password :" +password + " for amazon gaming")
     driver.get("https://gaming.amazon.com/intro")
     driver.implicitly_wait(2)
     time.sleep(2)
+    print(input("Try Gaming Account :  "))
     driver.find_element_by_xpath("//div[@class='sign-up-button tw-pd-x-9 tw-pd-y-05']").click()
 
     driver.find_element_by_xpath("//button[@class='tw-interactive tw-button tw-button--full-width tw-button--large tw-button--prime']").click()
