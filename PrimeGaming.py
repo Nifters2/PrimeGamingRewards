@@ -1,5 +1,4 @@
 """ This script can add subscriber to prime games"""
-import random
 from random import randrange
 import time
 import pathlib
@@ -67,18 +66,9 @@ print("This Script Start " + time.ctime())
 # email = "1990@gmail.com"
 email = spreadsheet_connector.row_values(2)
 
-email = email[0]
-
-print(email)
-
-print(input("This is the email :  "))
-
-
-# driver.get("https://accounts.google.com/")
-# time.sleep(4)
-
 
 def enter_email_password(driver, username, password):
+    print("Your email :" + email, "Your password :" + password + "for gmail")
     driver.get("https://accounts.google.com/?hl=en-us")
     driver.implicitly_wait(10)
     email_xpath = "//input[@type='email']"
@@ -107,9 +97,8 @@ def enter_email_password(driver, username, password):
 # enter_email_password(driver, "johnalis841@gmail.com", "globe0112358")
 
 
-# print(input("Google Login Done ....:\n"))
-
-def twist_signup():
+def twist_signup(email, password):
+    print("Your email :" +email, "Your password :" +password + "for TwistTv account")
     driver.get("https://www.twitch.tv/")
     time.sleep(4)
 
@@ -118,7 +107,6 @@ def twist_signup():
     time.sleep(2)
     driver.implicitly_wait(2)
 
-    # print(input("Stop :"))
     # before clicking button to open popup, store the current window handle
     main_window = driver.current_window_handle
 
@@ -133,16 +121,14 @@ def twist_signup():
 
     print(driver.title)  # Should now be the popup window
 
-    # print(input("Stop :"))
-
     username_field = driver.find_element_by_xpath("//input[@id='signup-username']")
     username_field.send_keys(str(randrange(10000000000)) + "randomusrename")
 
     password_field = driver.find_element_by_xpath("//input[@id='password-input']")
-    password_field.send_keys("@123PpaGlobe0112")
+    password_field.send_keys(password)
 
     conform_password_field = driver.find_element_by_xpath("//input[@id='password-input-confirmation']")
-    conform_password_field.send_keys("@123PpaGlobe0112")
+    conform_password_field.send_keys(password)
 
     driver.find_element_by_xpath("//select[@aria-label='Select your birthday month']").send_keys(Keys.DOWN)
 
@@ -165,9 +151,8 @@ def twist_signup():
     sign_up_button.click()
 
 
-twist_signup()
-# print(input("twitch Login Done ....\n"))
-def amazon_signup():
+def amazon_signup(email, password):
+    print("Your email :" +email, "Your password :" +password + "for amazon original Account")
     driver.get("https://www.amazon.com/your-account")
 
     driver.find_element_by_xpath("//a[@id='nav-link-accountList']").click()
@@ -178,29 +163,44 @@ def amazon_signup():
 
     driver.find_element_by_xpath("//input[@id='ap_email']").send_keys(email)
 
-    driver.find_element_by_xpath("//input[@id='ap_password']").send_keys("@123PpaGlobe0112")
+    driver.find_element_by_xpath("//input[@id='ap_password']").send_keys(password)
 
-    driver.find_element_by_xpath("//input[@id='ap_password_check']").send_keys("@123PpaGlobe0112")
+    driver.find_element_by_xpath("//input[@id='ap_password_check']").send_keys(password)
 
     driver.find_element_by_xpath("//input[@id='continue']").click()
 
-
-amazon_signup()
 # print(input("Stop :"))
 
-driver.get("https://gaming.amazon.com/intro")
-driver.implicitly_wait(2)
-time.sleep(2)
-driver.find_element_by_xpath("//div[@class='sign-up-button tw-pd-x-9 tw-pd-y-05']").click()
 
-driver.find_element_by_xpath("//button[@class='tw-interactive tw-button tw-button--full-width tw-button--large tw-button--prime']").click()
+def amazon_gaming(email, password):
+    print("Your email :" +email, "Your password :" +password + "for amazon gaming")
+    driver.get("https://gaming.amazon.com/intro")
+    driver.implicitly_wait(2)
+    time.sleep(2)
+    driver.find_element_by_xpath("//div[@class='sign-up-button tw-pd-x-9 tw-pd-y-05']").click()
 
-driver.find_element_by_xpath("//input[@id='ap_email']").send_keys(email)
+    driver.find_element_by_xpath("//button[@class='tw-interactive tw-button tw-button--full-width tw-button--large tw-button--prime']").click()
 
-driver.find_element_by_xpath("//input[@id='ap_password']").send_keys(email)
+    driver.find_element_by_xpath("//input[@id='ap_email']").send_keys(email)
 
-driver.find_element_by_xpath("//input[@id='signInSubmit']").click()
+    driver.find_element_by_xpath("//input[@id='ap_password']").send_keys(password)
+
+    driver.find_element_by_xpath("//input[@id='signInSubmit']").click()
 
 
-print(input("Stop :"))
+for i in range(10):
+    print(i)
+    email_address = email[0]
+    password = email[1]
+
+    print(email_address)
+    print(password)
+
+    twist_signup(email[i], email[i+1])
+    print(input("Veryfi Using Gmail :  "))
+    amazon_signup(email[i], email[i+1])
+    print(input("Solve Puzzle and enter OTP :  "))
+    amazon_gaming(email[i], email[i+1])
+    print(input("Go for Second Email :"))
+
 time.sleep(4)
