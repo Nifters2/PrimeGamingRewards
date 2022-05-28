@@ -174,9 +174,9 @@ def amazon_signup(email, password):
 
 def amazon_gaming(email, password):
     print("Your email :" +email, "\nYour password :" +password + " for amazon gaming")
-    driver.get("https://gaming.amazon.com/intro")
-    driver.implicitly_wait(2)
+    driver.implicitly_wait(10)
     time.sleep(2)
+    driver.get("https://gaming.amazon.com/intro")
     print(input("Try Gaming Account :  "))
     driver.find_element_by_xpath("//div[@class='sign-up-button tw-pd-x-9 tw-pd-y-05']").click()
 
