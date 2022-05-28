@@ -50,13 +50,14 @@ scopes = [
 ]
 
 credentials = Credentials.from_service_account_file(
-    'campaign-318908-b7f2f5f17cab.json',
+    # 'campaign-318908-b7f2f5f17cab.json',
+    'gspredforkundunce-5e3c88087406.json',
     scopes=scopes
 )
 gc = gspread.authorize(credentials)
 
 # Import Groups Data Data
-spreadsheet_connector = gc.open("YoutubeSubscriberEmailPassword").worksheet('Sheet1')
+spreadsheet_connector = gc.open("twitch prime").worksheet('Sheet1')
 
 
 # Time Counting
@@ -68,9 +69,9 @@ email = spreadsheet_connector.row_values(2)
 
 email = email[0]
 
-print(email[0])
+print(email)
 
-# print(input("This is the email :  "))
+print(input("This is the email :  "))
 
 
 # driver.get("https://accounts.google.com/")
